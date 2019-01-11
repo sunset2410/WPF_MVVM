@@ -5,11 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_MVVM"
         xmlns:vm ="clr-namespace:WPF_MVVM.ViewModel"
+        xmlns:common ="clr-namespace:WPF_MVVM.Common"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+        xmlns:behav = "http://schemas.microsoft.com/expression/2010/interactions" 
         mc:Ignorable="d"
         DataContext="{Binding Main, Source={StaticResource Locator}}"
         Title="MainWindow" Height="600" Width="700">
     <Grid>
         <ListBox Width="400" Height="500" ItemsSource="{Binding AllItems}" SelectionMode="Extended">
+            <i:Interaction.Behaviors>
+                <common:ListBoxSelectionBehavior SelectedItems="{Binding SelectedItems}" />
+            </i:Interaction.Behaviors>
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid Width="400" Height="20" Background="Transparent">

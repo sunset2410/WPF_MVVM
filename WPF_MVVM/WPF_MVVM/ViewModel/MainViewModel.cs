@@ -1,4 +1,5 @@
 using GalaSoft.MvvmLight;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using WPF_MVVM.Model;
@@ -20,6 +21,8 @@ namespace WPF_MVVM.ViewModel
     public class MainViewModel : ViewModelBase
     {
         public ObservableCollection<Student> AllItems { get; set; }
+
+        public IList SelectedItems { get; set; }
         public MainViewModel()
         {
             AllItems = new ObservableCollection<Student>();
