@@ -1,4 +1,5 @@
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -22,7 +23,16 @@ namespace WPF_MVVM.ViewModel
     {
         public ObservableCollection<Student> AllItems { get; set; }
 
-        public IList SelectedItems { get; set; }
+        private IList _selectedStudents;
+        public IList SelectedStudents
+        {
+            get { return _selectedStudents; }
+            set
+            {
+                _selectedStudents = value;
+                RaisePropertyChanged("SelectedStudents");
+            }
+        }
         public MainViewModel()
         {
             AllItems = new ObservableCollection<Student>();
@@ -41,6 +51,26 @@ namespace WPF_MVVM.ViewModel
             AllItems.Add(new Student("4", "TRAN D", true, dict));
             AllItems.Add(new Student("5", "TRAN E", true, dict));
             AllItems.Add(new Student("6", "TRAN F", true, dict));
+        }
+
+
+
+        private RelayCommand _clickEdit = null;
+        public RelayCommand ClickEdit
+        {
+            get
+            {
+                if (_clickEdit == null)
+                {
+                    _clickEdit = new RelayCommand(() =>
+                    {
+                        int count = SelectedStudents.Count;
+
+
+                    });
+                }
+                return _clickEdit;
+            }
         }
 
     }

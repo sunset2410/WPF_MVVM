@@ -11,10 +11,21 @@
         mc:Ignorable="d"
         DataContext="{Binding Main, Source={StaticResource Locator}}"
         Title="MainWindow" Height="600" Width="700">
+    <Window.Resources>
+        <common:SelectedITemsToBoolConverter x:Key="SelectedITemsToBoolConverter" />
+    </Window.Resources>
     <Grid>
         <ListBox Width="400" Height="500" ItemsSource="{Binding AllItems}" SelectionMode="Extended">
+            <ListBox.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Edit" Name="EDIT" Command="{Binding ClickEdit}" IsEnabled="{Binding SelectedStudents, Converter={StaticResource SelectedITemsToBoolConverter}, ConverterParameter= EDIT}"></MenuItem>
+                    <MenuItem Header="Enable" Name="Enable" IsEnabled="{Binding SelectedStudents, Converter={StaticResource SelectedITemsToBoolConverter}, ConverterParameter= ENABLE}"></MenuItem>
+                    <MenuItem Header="Disable" Name="Disable" IsEnabled="{Binding SelectedStudents, Converter={StaticResource SelectedITemsToBoolConverter}, ConverterParameter= DISABLE}"></MenuItem>
+                    <MenuItem Header="Show Path" Name="Show" IsEnabled="{Binding SelectedStudents, Converter={StaticResource SelectedITemsToBoolConverter}, ConverterParameter= SHOW}"></MenuItem>
+                </ContextMenu>
+            </ListBox.ContextMenu>
             <i:Interaction.Behaviors>
-                <common:ListBoxSelectionBehavior SelectedItems="{Binding SelectedItems}" />
+                <common:ListBoxSelectionBehavior SelectedItems="{Binding SelectedStudents}"/>
             </i:Interaction.Behaviors>
             <ListBox.ItemTemplate>
                 <DataTemplate>
@@ -25,7 +36,7 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <Grid Grid.Column="0">
-                            <TextBlock Text="Binding Id" Margin="2"/>
+                            <TextBlock Text="{Binding Id}" Margin="2"/>
                         </Grid>
                         <Border Grid.Column="1" BorderThickness="2" BorderBrush="LightBlue"></Border>
                         <Grid Grid.Column="2">
