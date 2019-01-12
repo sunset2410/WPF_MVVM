@@ -93,7 +93,7 @@ namespace WPF_MVVM.ViewModel
                                 if (val.Id.Equals(temp.Id)) val.ShowView = true;
                             }
                         }
-
+                        RaisePropertyChanged("SelectedStudents");
                     });
                 }
                 return _clickEnable;
@@ -119,8 +119,7 @@ namespace WPF_MVVM.ViewModel
                                 if (val.Id.Equals(temp.Id)) val.ShowView = false;
                             }
                         }
-
-
+                        RaisePropertyChanged("SelectedStudents");
                     });
                 }
                 return _clickDisable;
