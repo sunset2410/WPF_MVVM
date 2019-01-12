@@ -11,6 +11,8 @@
   <Application.Resources>
         <ResourceDictionary>
             <vm:ViewModelLocator x:Key="Locator"/>
+            <common:SelectedITemsToBoolConverter x:Key="SelectedITemsToBoolConverter" />
+            <common:BoolToOpacityConverter x:Key="BoolToOpacityConverter" />
         </ResourceDictionary>
     </Application.Resources>
 </Application>

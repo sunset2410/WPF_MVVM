@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
+using WPF_MVVM.Model;
 
 namespace WPF_MVVM.Common
 {
@@ -14,7 +15,7 @@ namespace WPF_MVVM.Common
         {
             string para = parameter as string;
             IList selectedItems = value as IList;
-            if(para != null && selectedItems != null)
+            if (para != null && selectedItems != null)
             {
                 int count = selectedItems.Count;
                 switch (para)
@@ -26,12 +27,35 @@ namespace WPF_MVVM.Common
                             return false;
                     case "ENABLE":
                         if (count >= 1)
-                            return true;
+                        {
+                            if (count == 1)
+                            {
+                                Student temp = selectedItems[0] as Student;
+                                if (temp.ShowView)
+                                    return false;
+                                else
+                                    return true;
+
+                            }
+                            else
+                                return true;
+                        }
                         else
                             return false;
                     case "DISABLE":
                         if (count >= 1)
-                            return true;
+                        {
+                            if (count == 1)
+                            {
+                                Student temp = selectedItems[0] as Student;
+                                if (temp.ShowView)
+                                    return true;
+                                else
+                                    return false;
+                            }
+                            else
+                                return true;
+                        }
                         else
                             return false;
                     case "SHOW":
@@ -42,6 +66,22 @@ namespace WPF_MVVM.Common
                 }
             }
             return false;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class BoolToOpacityConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            bool para = (bool)value ;
+            if (para)
+                return "1";
+            else return "0.3";
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)

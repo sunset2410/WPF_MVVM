@@ -12,16 +12,15 @@
         DataContext="{Binding Main, Source={StaticResource Locator}}"
         Title="MainWindow" Height="600" Width="700">
     <Window.Resources>
-        <common:SelectedITemsToBoolConverter x:Key="SelectedITemsToBoolConverter" />
     </Window.Resources>
     <Grid>
         <ListBox Width="400" Height="500" ItemsSource="{Binding AllItems}" SelectionMode="Extended">
             <ListBox.ContextMenu>
                 <ContextMenu>
                     <MenuItem Header="Edit" Name="EDIT" Command="{Binding ClickEdit}" IsEnabled="{Binding SelectedStudents, Converter={StaticResource SelectedITemsToBoolConverter}, ConverterParameter= EDIT}"></MenuItem>
-                    <MenuItem Header="Enable" Name="Enable" IsEnabled="{Binding SelectedStudents, Converter={StaticResource SelectedITemsToBoolConverter}, ConverterParameter= ENABLE}"></MenuItem>
-                    <MenuItem Header="Disable" Name="Disable" IsEnabled="{Binding SelectedStudents, Converter={StaticResource SelectedITemsToBoolConverter}, ConverterParameter= DISABLE}"></MenuItem>
-                    <MenuItem Header="Show Path" Name="Show" IsEnabled="{Binding SelectedStudents, Converter={StaticResource SelectedITemsToBoolConverter}, ConverterParameter= SHOW}"></MenuItem>
+                    <MenuItem Header="Enable" Name="Enable"  Command="{Binding ClickEnable}" IsEnabled="{Binding SelectedStudents, Converter={StaticResource SelectedITemsToBoolConverter}, ConverterParameter= ENABLE}"></MenuItem>
+                    <MenuItem Header="Disable" Name="Disable"   Command="{Binding ClickDisable}" IsEnabled="{Binding SelectedStudents, Converter={StaticResource SelectedITemsToBoolConverter}, ConverterParameter= DISABLE}"></MenuItem>
+                    <MenuItem Header="Show Path" Name="Show"  Command="{Binding ClickShow}" IsEnabled="{Binding SelectedStudents, Converter={StaticResource SelectedITemsToBoolConverter}, ConverterParameter= SHOW}"></MenuItem>
                 </ContextMenu>
             </ListBox.ContextMenu>
             <i:Interaction.Behaviors>
@@ -29,7 +28,7 @@
             </i:Interaction.Behaviors>
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Grid Width="400" Height="20" Background="Transparent">
+                    <Grid Width="400" Height="20" Opacity="{Binding ShowView, Converter={StaticResource BoolToOpacityConverter}}">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="1"/>

@@ -31,15 +31,25 @@ namespace WPF_MVVM.Model
                 OnPropertyChanged("Name");
             }
         }
-        public bool Show { get; set; }
+
+        private bool _showView = false;
+        public bool ShowView
+        {
+            get { return _showView; }
+            set
+            {
+                _showView = value;
+                OnPropertyChanged("ShowView");
+            }
+        }
 
         public Dictionary<string,string> Detail { get; set; }
 
-        public Student(string Id, string Name, bool Show, Dictionary<string, string> Detail)
+        public Student(string Id, string Name, bool ShowView, Dictionary<string, string> Detail)
         {
             this.Id = Id;
             this.Name = Name;
-            this.Show = Show;
+            this.ShowView = ShowView;
             this.Detail = Detail;
 
         }
