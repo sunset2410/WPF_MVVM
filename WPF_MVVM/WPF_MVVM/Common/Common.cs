@@ -12,4 +12,10 @@ namespace WPF_MVVM.Common
 
 
     }
+
+    public class Message
+    {
+        public const string EDIT = "EDIT";
+
+    }
 }

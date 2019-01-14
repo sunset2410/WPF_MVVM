@@ -1,9 +1,14 @@
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Messaging;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Windows.Data;
+using WPF_MVVM.Common;
 using WPF_MVVM.Model;
+using WPF_MVVM.View;
 
 namespace WPF_MVVM.ViewModel
 {
@@ -45,12 +50,17 @@ namespace WPF_MVVM.ViewModel
             dict.Add("Class", "9A");
             dict.Add("Group", "8");
             dict.Add("School", "HOANG MAI");
-            AllItems.Add(new Student("1", "TRAN ANH", true, dict));
-            AllItems.Add(new Student("2", "TRAN B", false, dict));
-            AllItems.Add(new Student("3", "TRAN C", true, dict));
-            AllItems.Add(new Student("4", "TRAN D", false, dict));
-            AllItems.Add(new Student("5", "TRAN E", false, dict));
-            AllItems.Add(new Student("6", "TRAN F", true, dict));
+            AllItems.Add(new Student("ITEM0", "A", true, dict));
+            AllItems.Add(new Student("ITEM1", "B", false, dict));
+            AllItems.Add(new Student("ITEM2", "A", true, dict));
+            AllItems.Add(new Student("ITEM3", "C", false, dict));
+            AllItems.Add(new Student("ITEM4", "A", false, dict));
+            AllItems.Add(new Student("ITEM5", "B", true, dict));
+
+            CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(AllItems);
+            view.SortDescriptions.Add(new SortDescription("Name", ListSortDirection.Ascending));
+            view.SortDescriptions.Add(new SortDescription("Id", ListSortDirection.Ascending));
+            
         }
 
 
@@ -65,7 +75,9 @@ namespace WPF_MVVM.ViewModel
                     _clickEdit = new RelayCommand(() =>
                     {
                         int count = SelectedStudents.Count;
-
+                        var dialog = new DetailWindow();
+                        Messenger.Default.Send(Message.EDIT, AllItems[0]);
+                        dialog.ShowDialog();
 
                     });
                 }
