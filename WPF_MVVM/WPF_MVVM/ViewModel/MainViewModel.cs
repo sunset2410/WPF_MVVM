@@ -76,7 +76,7 @@ namespace WPF_MVVM.ViewModel
                     {
                         int count = SelectedStudents.Count;
                         var dialog = new DetailWindow();
-                        Messenger.Default.Send(Message.EDIT, AllItems[0]);
+                        Messenger.Default.Send(new NotificationMessage<object>(this, AllItems[0], Message.EDIT));
                         dialog.ShowDialog();
 
                     });

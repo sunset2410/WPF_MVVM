@@ -13,7 +13,7 @@ namespace WPF_MVVM.ViewModel
     {
         public DetailViewModel()
         {
-            Messenger.Default.Register<object>(this, RegisterMessage);
+            RegisterMessage();
             Dictionary<string, string> dict = new Dictionary<string, string>();
             dict.Add("Class", "9A");
             dict.Add("Group", "8");
@@ -21,9 +21,15 @@ namespace WPF_MVVM.ViewModel
             Student a = new Student("1", "TRAN ANH", true, dict);
         }
 
-        private void RegisterMessage(object obj)
+        private void RegisterMessage()
         {
-            
+            Messenger.Default.Register<NotificationMessage<object>>(this,(msg) => 
+            {
+
+
+
+
+            });
         }
 
        
