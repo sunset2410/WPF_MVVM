@@ -10,12 +10,15 @@
     <StackPanel HorizontalAlignment="Center"
                 VerticalAlignment="Center">
         <ToggleButton Width="70"
+                      IsChecked="{Binding IsCheck}"
                       Height="35"
                       Margin="10"
                       Style="{StaticResource SwitchTypeToggleButton}" />
         <ToggleButton Width="60"
+                      IsChecked="False"
                       Height="40"
                       Margin="10"
+                      Click="ToggleButton_Click"
                       Style="{StaticResource SwitchTypeToggleButton}" />
     </StackPanel>
 </Window>
