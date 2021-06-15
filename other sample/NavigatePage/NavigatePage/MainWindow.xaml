@@ -1,0 +1,24 @@
+﻿<Window x:Class="NavigatePage.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NavigatePage"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Name="title" Background="Red"></Grid>
+        <Grid Name="main" Grid.Row="1" Visibility="Visible">
+            <local:UserControl1></local:UserControl1>
+        </Grid>
+        <Grid Name="sub" Grid.Row="1" Visibility="Collapsed">
+            <local:UserControl2 Grid.Row="2"></local:UserControl2>
+        </Grid>
+        <Grid Grid.Row="2" Name="footer" Background="Green"></Grid>
+    </Grid>
+</Window>
