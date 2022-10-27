@@ -1,1 +1,3 @@
 https://www.geeksforgeeks.org/mvc-design-pattern/
+
+https://helloacm.com/model-view-controller-explained-in-c/
