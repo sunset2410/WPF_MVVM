@@ -1,3 +1,14 @@
 https://www.geeksforgeeks.org/mvc-design-pattern/
 
 https://helloacm.com/model-view-controller-explained-in-c/
+
+
+31.10
+https://cs.android.com/android/platform/superproject/+/master:system/core/libutils/RefBase.cpp;l=770
+https://github.com/torvalds/linux/blob/master/include/uapi/linux/android/binder.h
+https://cs.android.com/android/platform/superproject/+/master:frameworks/native/libs/binder/include/binder/IInterface.h;l=69;drc=b45a2ea782074944f79fc388df20b06e01f265f7?q=Bninterface&ss=android%2Fplatform%2Fsuperproject
+https://pierrchen.blogspot.com/2015/06/yet-another-deep-dive-of-android-binder.html
+https://pages.dogdog.run/binder/native_binder.html
+https://medium.com/swlh/binder-architecture-and-core-components-38089933bba
+https://blog.csdn.net/zhuawalibai/article/details/90266864
+https://stackoverflow.com/questions/15520098/implementation-of-remote
