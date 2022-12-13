@@ -1,0 +1,16 @@
+
+https://windowsreport.com/windows-terminal-windows-10/
+
+
+https://windowsreport.com/windows-terminal-windows-10/
+
+
+https://github.com/microsoft/terminal/releases
+
+https://github.com/microsoft/terminal/releases
+
+
+Launch a Powershell window to the file location of the downloaded file
+
+
+Add-AppxPackage Microsoft.WindowsTerminalPreview_Win10_1.16.2641.0_8wekyb3d8bbwe.msixbundle
